@@ -1,0 +1,19 @@
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Tech Talk</span>
+    <span class="example-spacer"></span>
+    <!-- <button mat-icon-button aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button> -->
+   
+    <button mat-button [matMenuTriggerFor]="menu" mat-icon-button aria-label="Example icon-button with heart icon">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>prakash@cognizant.com</button>  
+        <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>    
+    </mat-menu>
+    
+  </mat-toolbar>
