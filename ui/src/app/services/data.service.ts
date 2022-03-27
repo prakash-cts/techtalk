@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { RestClientService } from './rest-client.service';
+import { HttpClient, HttpEvent, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import { Observable } from 'rxjs';
 export class DataService {
   private serverUrl = 'http://localhost:8080/';
   constructor(
-    private http : HttpClient) { }
+    private http : HttpClient,
+    private restClientService:RestClientService) { }
 
     // httpOptions = {
     //   headers: new HttpHeaders({
@@ -17,8 +19,13 @@ export class DataService {
     //   }),
     // };
 
-  getUserData(): Observable<string> {
-    return this.http.get(this.serverUrl+'token',{responseType: 'text'});
+  getUserData() : Observable<string>{
+    //return this.http.get(this.serverUrl+'token',{responseType: 'text'});
+    const map = new Map<string, any>();
+    map.set('text', 'responseType');
+    const headers = new Map<string,string>();
+    headers.set('Authorization','prakash');
+    return <any> this.restClientService.get('token',map,headers);
   } 
   signUpUser(email: string, password: string): Observable<string> {
     const signUpBodyMap: any = {
