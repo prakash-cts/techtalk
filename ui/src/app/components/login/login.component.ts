@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     console.log(this.loginForm.value);
-    this.dataService.signUpUser(this.loginForm.get('email')?.value,this.loginForm.get('password')?.value).subscribe(data=>{
+    this.dataService.login(this.loginForm.get('email')?.value,this.loginForm.get('password')?.value).subscribe((data:string)=>{
       console.log('login is :'+data);
       if(data === 'valid'){
         this.router.navigate(['dashboard']);

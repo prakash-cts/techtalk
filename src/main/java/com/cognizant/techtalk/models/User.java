@@ -1,6 +1,7 @@
 package com.cognizant.techtalk.models;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="user_details")
@@ -11,8 +12,17 @@ public class User {
     private String email;
     private String password;
 
+    public User() {
+    }
+
     public User(String name, String password) {
         this.email = name;
+        this.password = password;
+    }
+
+    public User(Integer id, String email, String password) {
+        this.id = id;
+        this.email = email;
         this.password = password;
     }
 
@@ -38,6 +48,19 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return email.equals(user.email) && password.equals(user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, password);
     }
 
     @Override

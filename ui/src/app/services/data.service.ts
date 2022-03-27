@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -21,14 +21,24 @@ export class DataService {
     return this.http.get(this.serverUrl+'token',{responseType: 'text'});
   } 
   signUpUser(email: string, password: string): Observable<string> {
-    const map = new Map<string, string>();
-    map.set('text', 'responseType');
-
     const signUpBodyMap: any = {
       'email': email,
       'password': password
     };
     return this.http.post(this.serverUrl+'user', signUpBodyMap, {responseType: 'text'});
   }
+  login(email: string, password: string): Observable<string> {
+    const body: any = {
+      'email': email,
+      'password': password
+    };
+    return this.http.post(this.serverUrl+'user/login', body, {responseType: 'text'});
+  }
+
+  getRegex():Observable<string>{
+    return this.http.get(this.serverUrl+'user/regex',{responseType: 'text'});
+  }
+  
+  
 
 }

@@ -30,6 +30,7 @@ public class UsernameAuthFilter extends OncePerRequestFilter {
                                 FilterChain filterChain) throws IOException, ServletException {
         String header = httpServletRequest.getHeader(AUTHORIZATION);
         logger.info("The header is : {}",header);
+        logger.info("The request url is : {}",httpServletRequest.getRequestURI());
         if( header == null || !header.startsWith(BEARER)) {
             filterChain.doFilter(httpServletRequest, httpServletResponse);
             return;
