@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.nio.CharBuffer;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 @Service
@@ -19,19 +20,17 @@ public class UserService {
     private UserRepository userRepository;
 
     public String save(User user){
-        if(isValidEmail(user.getEmail())){
+        if(isValidEmail(user.getEmail()) && checkIfUserAlreadyExists(user.getEmail())){
             userRepository.save(user);
             return VALID;
         }
         return INVALID;
 
     }
-    public User getUser(String email){
-        return userRepository.findByEmail(email);
-    }
     public String validateUser(User user){
-        User userWithGivenEmail = userRepository.findByEmail(user.getEmail());
-        if(user.equals(userWithGivenEmail)){
+        Optional<User> userWithGivenEmail = userRepository.findByEmail(user.getEmail());
+        if(userWithGivenEmail.isPresent()
+                && user.equals(userWithGivenEmail.get())){
             return VALID;
         }
         return INVALID;
@@ -40,8 +39,13 @@ public class UserService {
         return COGNIZANT_REGEX;
     }
     private boolean isValidEmail(String email){
+
         return true;
 //        Pattern pattern = Pattern.compile(COGNIZANT_REGEX);
 //        return pattern.matcher(CharBuffer.wrap(email)).matches();
+    }
+    private boolean checkIfUserAlreadyExists(String email) {
+        Optional<User> userWithGivenEmail = userRepository.findByEmail(email);
+        return userWithGivenEmail.isPresent();
     }
 }

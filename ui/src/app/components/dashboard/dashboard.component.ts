@@ -1,3 +1,4 @@
+import { DialogService } from './../../services/dialog.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialogService: DialogService) { }
 
   ngOnInit(): void {
+  }
+  openDialog(){
+    this.dialogService.openDialog('Check dialog box','It is working','titleContent','OK');
   }
 
 }

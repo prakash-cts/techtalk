@@ -1,8 +1,10 @@
+import { DialogService } from './../../services/dialog.service';
 import { DataService } from './../../services/data.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
 import { PasswordValidator } from './password.validator';
+import { delay } from "rxjs/operators";
 
 export function forbiddenNameValidator(nameRe: string): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -31,9 +33,11 @@ export class SignupComponent implements OnInit {
   });
   regex!: string;
   validEmail: boolean = true;
+  signUpValid = true;
   constructor(private fb:FormBuilder,
     private router: Router,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    private dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.dataService.getRegex().subscribe(data=>{
@@ -59,7 +63,14 @@ export class SignupComponent implements OnInit {
     this.dataService.signUpUser(this.signupForm.get('email')?.value,this.signupForm.get('password')?.value).subscribe(data=>{
       console.log('sign up is :'+data);
       if(data === 'valid'){
-        this.router.navigate(['dashboard']);
+        this.dialogService.openDialogWithNoTitleOkButton('User '+this.signupForm.get('email')?.value+' is regeistered succesfully').then(
+          result=>{
+            this.router.navigate(['dashboard']);
+          }
+        )
+        
+      }else{
+        this.signUpValid = false;
       }
     })
   }

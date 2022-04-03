@@ -4,9 +4,21 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-.float-left{float:left;}
-.float-right{float:right;}
+.floatLeft{float:left;}
+.floatRight{float:right;}
 .w100{width: 100%;}
 .w50{width: 50%;}
 
 .ml10px{margin-left: 10px !important;}
+
+.fontSize18{font-size: 18px;}
+.fontSize16{font-size: 16px;}
+.fontSizeDefault{font-size: 1rem;}
+
+.dialog-bg-trans {
+    background-color: transparent;
+  }
+
+.custom-dialog-container .mat-dialog-container {
+  overflow-x: hidden;
+}

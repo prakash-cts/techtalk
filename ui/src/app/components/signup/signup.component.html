@@ -1,6 +1,7 @@
 <mat-card id="card" class="login-card">
     <mat-card-title>
 		signup
+    <mat-error class="fontSizeDefault" *ngIf="!signUpValid">Please enter valid username and password</mat-error>
 	</mat-card-title>
     <mat-card-content>
         <form class="login-form" [formGroup]="signupForm" (ngSubmit)="submit()">

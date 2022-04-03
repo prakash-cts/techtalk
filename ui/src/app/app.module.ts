@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HeaderComponent } from './components/header/header.component';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,7 @@ export class DataService {
     const map = new Map<string, any>();
     map.set('text', 'responseType');
     const headers = new Map<string,string>();
-    headers.set('Authorization','prakash');
+    //headers.set('Authorization','prakash');
     return <any> this.restClientService.get('token',map,headers);
   } 
   signUpUser(email: string, password: string): Observable<string> {

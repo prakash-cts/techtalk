@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     email : this.emailFormControl,
     password : this.passwordFormControl
   })
-  message!: string;
+  loginValid=true;
   
   constructor(private dataService : DataService,
     private fb: FormBuilder,
@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
       console.log('login is :'+data);
       if(data === 'valid'){
         this.router.navigate(['dashboard']);
+      }else{
+        this.loginValid = false;
       }
     })
   }
