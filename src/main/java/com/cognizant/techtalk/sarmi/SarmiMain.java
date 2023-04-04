@@ -30,7 +30,7 @@ public class SarmiMain {
 //        System.out.println(input);
 //        System.out.println(input2);
         input1 = replaceSubString(input1, character2,indexList1);
-        input1 = replaceSubString(input1, character2,indexList2);
+        input1 = replaceSubString(input1, character1,indexList2);
     }
     private static String replaceSubString(String str,char character, List<Integer>  posList){
 //        String str = "Techie Delight";
@@ -45,7 +45,7 @@ public class SarmiMain {
             if(Character.isUpperCase(sb.charAt(pos))){
                 sb.setCharAt(pos, character);
             }else if(Character.isLowerCase(sb.charAt(pos))){
-                char c= Character.toLowerCase(sb.charAt(pos));
+                char c= Character.toLowerCase(character);
                 sb.setCharAt(pos, c);
             }
             // replace character at the specified position
