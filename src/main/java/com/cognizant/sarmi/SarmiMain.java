@@ -1,4 +1,4 @@
-package com.cognizant.techtalk.sarmi;
+package com.cognizant.sarmi;
 
 import java.util.*;
 
