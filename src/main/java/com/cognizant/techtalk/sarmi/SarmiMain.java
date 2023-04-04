@@ -41,7 +41,7 @@ public class SarmiMain {
             StringBuilder sb = new StringBuilder(str);
             if(Character.isUpperCase(sb.charAt(pos))){
                 sb.setCharAt(pos, character);
-            }else{
+            }else if(Character.isLowerCase(sb.charAt(pos))){
                 char c= Character.toLowerCase(sb.charAt(pos));
                 sb.setCharAt(pos, c);
             }
