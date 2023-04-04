@@ -30,12 +30,15 @@ public class SarmiMain {
 //        System.out.println(input);
 //        System.out.println(input2);
         input1 = replaceSubString(input1, character2,indexList1);
-        input1 = replaceSubString(input1, character1,indexList2);
+        input1 = replaceSubString(input1, character2,indexList2);
     }
     private static String replaceSubString(String str,char character, List<Integer>  posList){
 //        String str = "Techie Delight";
 //        char ch = '_';
 //        int pos = 1;
+        System.out.println(str);
+        System.out.println(character);
+        System.out.println(posList);
         for(int i:posList){
             int pos = i;
             StringBuilder sb = new StringBuilder(str);
