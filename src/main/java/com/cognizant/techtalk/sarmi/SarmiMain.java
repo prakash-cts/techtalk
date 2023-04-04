@@ -23,12 +23,12 @@ public class SarmiMain {
         String input1 = in.nextLine();
         List<Integer> indexList1 = getIndexOfSwappedLetters(input1,character1);
         List<Integer> indexList2 = getIndexOfSwappedLetters(input1,character2);
-        System.out.println(indexList1);
-        System.out.println(indexList2);
-        System.out.println(character1);
-        System.out.println(pos);
-        System.out.println(input);
-        System.out.println(input2);
+//        System.out.println(indexList1);
+//        System.out.println(indexList2);
+//        System.out.println(character1);
+//        System.out.println(pos);
+//        System.out.println(input);
+//        System.out.println(input2);
         input1 = replaceSubString(input1, character2,indexList1);
         input1 = replaceSubString(input1, character1,indexList2);
     }
