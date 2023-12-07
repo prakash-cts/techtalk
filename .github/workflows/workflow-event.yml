@@ -11,5 +11,23 @@ jobs:
     name: Bump Package Version
     runs-on: ubuntu-latest
     steps:
-      - name: Example variable usage
-        run: git tag ${{ github.event.inputs.version }}
+      - name: Checkout Version
+        uses: actions/checkout@v3
+      - name: Checkout Version
+        uses: actions/checkout@v3
+        with:
+          repository: prakash-cts/techtalk
+          ref: master
+          path: master
+      - name: Update version
+        run: |
+          pwd
+          echo "List the folders"
+          ls
+          echo "Enter into version"
+          cd version
+          ls
+          git branch
+          cat version.txt
+          cd ../master
+          ls
