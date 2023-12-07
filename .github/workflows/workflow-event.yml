@@ -29,6 +29,7 @@ jobs:
           cd ../master
           ls
   do-another-job:
+    needs: bump-version
     name: Second job
     runs-on: ubuntu-latest
     steps:
