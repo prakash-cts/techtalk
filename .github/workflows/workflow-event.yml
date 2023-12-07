@@ -36,5 +36,4 @@ jobs:
       - name: Update version 2
         run: |
           pwd
-          ls
-          cat /etc/os-release
+          env
