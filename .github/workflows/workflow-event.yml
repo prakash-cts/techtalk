@@ -21,3 +21,5 @@ jobs:
         run: |
           pwd
           ls
+          cd version
+          git branch
