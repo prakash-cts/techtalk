@@ -28,3 +28,12 @@ jobs:
           cat version.txt
           cd ../master
           ls
+  do-another-job:
+    name: Second job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update version 2
+        run: |
+          pwd
+          ls
+          cat /etc/os-release
