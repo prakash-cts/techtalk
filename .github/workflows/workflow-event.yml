@@ -41,11 +41,10 @@ jobs:
     runs-on: ubuntu-latest
     # Map a step output to a job output
     outputs:
-      output1: ${{ steps.outputs.test }}
+      output1: ${{ steps.step1.outputs.test }}
     steps:
-      - name: Step1
+      - id: step1
         run: echo "test=hello" >> "$GITHUB_OUTPUT"
-      
   job2:
     runs-on: ubuntu-latest
     needs: job1
